@@ -236,29 +236,33 @@ export async function POST(req: NextRequest) {
 
     const processedFiles: string[] = [];
 
-    // Process segments
-    for (let i = 0; i < segments.length; i++) {
-      const segment = segments[i];
+    // Process segments concurrently
+    const segmentPromises = segments.map(async (segment, i) => {
       const filePrefix = String(i + 1).padStart(3, "0");
+      const filesToPush: string[] = [];
 
       if (segment.type === "line") {
         const voiceId = getVoiceId(segment.speaker);
-        const fileName = `${filePrefix}.wav`; // Using .wav for resemble output to easily concatenate
+        const fileName = `${filePrefix}.wav`;
         const filePath = path.join(tempDir, fileName);
 
         await synthesizeSpeech(segment.text, voiceId, filePath);
-        processedFiles.push(filePath);
+        filesToPush.push(filePath);
 
         // Auto-inject 500ms pause after every line for natural spacing
-        processedFiles.push(autoPausePath);
-
+        filesToPush.push(autoPausePath);
       } else {
         const fileName = `${filePrefix}_pause.wav`;
         const filePath = path.join(tempDir, fileName);
         await generateSilence(segment.ms, filePath);
-        processedFiles.push(filePath);
+        filesToPush.push(filePath);
       }
-    }
+
+      return filesToPush;
+    });
+
+    const results = await Promise.all(segmentPromises);
+    results.forEach(files => processedFiles.push(...files));
 
     // Create concat.txt
     const concatTxtPath = path.join(tempDir, "concat.txt");
