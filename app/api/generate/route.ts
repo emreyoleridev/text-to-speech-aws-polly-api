@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PollyClient, SynthesizeSpeechCommand, OutputFormat, TextType, VoiceId } from "@aws-sdk/client-polly";
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs/promises";
 import path from "path";
@@ -20,21 +19,24 @@ const EFFECTIVE_FFMPEG_PATH = getFfmpegPath();
 console.log("Using FFmpeg path:", EFFECTIVE_FFMPEG_PATH);
 
 // --- Voice Configuration ---
-const NARRATOR_VOICE: VoiceId = "Joanna"; // Standard US English Female
+const NARRATOR_VOICE = "e984fb89"; // Mauren (Announcer)
 
-// Expanded Voice List (Standard Engine)
-// Includes US, UK, Australian, Welsh, Indian English accents for variety
-const MAN_VOICES: VoiceId[] = [
-  "Joey", "Matthew", "Justin",  // US
-  "Brian",                      // British
-  "Russell",                    // Australian
-  "Geraint"                     // Welsh
+const MAN_VOICES = [
+  "3e907bcc", // Robert (US)
+  "3a02dc40", // Mike (US)
+  "1864fd63", // Pete (US)
+  "0c755526", // Ed Smart (UK)
+  "6a3e095e", // Jason (US)
+  "bec88a80"  // Brian (US)
 ];
 
-const WOMAN_VOICES: VoiceId[] = [
-  "Salli", "Kendra", "Ivy", "Kimberly", // US
-  "Amy", "Emma",                        // British
-  "Nicole",                             // Australian
+const WOMAN_VOICES = [
+  "ef49f972", // Olivia (US)
+  "e28236ee", // Samantha (US)
+  "96b91cf9", // Charlotte (US)
+  "ecbe5d97", // Amelia (US)
+  "a72d9fca", // Aurora (US)
+  "33e64cd2"  // Paula J (UK)
 ];
 
 // --- Types ---
@@ -43,19 +45,6 @@ type Segment =
   | { type: "pause"; ms: number };
 
 // --- Helper Functions ---
-
-function escapeXml(unsafe: string): string {
-  return unsafe.replace(/[<>&'"]/g, (c) => {
-    switch (c) {
-      case '<': return '&lt;';
-      case '>': return '&gt;';
-      case '&': return '&amp;';
-      case '\'': return '&apos;';
-      case '"': return '&quot;';
-    }
-    return c;
-  });
-}
 
 /**
  * Parses the raw script into segments.
@@ -70,7 +59,6 @@ function parseScript(script: string): Segment[] {
     line = line.trim();
     if (!line) continue;
 
-    // ROBUST PAUSE DETECTION: Check if line starts with "<pause"
     if (line.toLowerCase().startsWith("<pause")) {
       const numberMatch = line.match(/\d+/);
       let ms = 1000;
@@ -78,7 +66,6 @@ function parseScript(script: string): Segment[] {
         ms = parseInt(numberMatch[0], 10);
       }
       segments.push({ type: "pause", ms: ms });
-      console.log(`[Parser] Found pause: ${ms}ms`);
       continue;
     }
 
@@ -96,16 +83,13 @@ function parseScript(script: string): Segment[] {
     segments.push({ type: "line", speaker: "NARRATOR", text: line });
   }
 
-  console.log("Parsed Segments:", JSON.stringify(segments, null, 2));
   return segments;
 }
 
-
-
 /**
- * Maps a speaker token to a Polly Voice ID.
+ * Maps a speaker token to a Resemble Voice UUID.
  */
-function getVoiceId(speaker: string): VoiceId {
+function getVoiceId(speaker: string): string {
   if (speaker === "NARRATOR") return NARRATOR_VOICE;
 
   if (speaker.startsWith("MAN")) {
@@ -114,7 +98,6 @@ function getVoiceId(speaker: string): VoiceId {
     if (suffix && /^\d+$/.test(suffix)) {
       index = parseInt(suffix, 10) - 1;
     }
-    // Wrap around
     if (index < 0) index = 0;
     return MAN_VOICES[index % MAN_VOICES.length];
   }
@@ -125,7 +108,6 @@ function getVoiceId(speaker: string): VoiceId {
     if (suffix && /^\d+$/.test(suffix)) {
       index = parseInt(suffix, 10) - 1;
     }
-    // Wrap around
     if (index < 0) index = 0;
     return WOMAN_VOICES[index % WOMAN_VOICES.length];
   }
@@ -133,57 +115,57 @@ function getVoiceId(speaker: string): VoiceId {
   return NARRATOR_VOICE;
 }
 
-const polly = new PollyClient({ region: process.env.AWS_REGION || "us-east-1" });
-
 /**
- * Synthesizes text using Amazon Polly.
- * Supports SSML for Narrator speed control.
+ * Synthesizes text using Resemble AI v2 HTTP Streaming endpoint.
  */
-async function synthesizeSpeech(text: string, voiceId: VoiceId, outputPath: string, isNarrator: boolean = false) {
-  let textToSynthesize = text;
-  let textType: TextType = TextType.TEXT;
+async function synthesizeSpeech(text: string, voiceUuid: string, outputPath: string) {
+  const apiKey = process.env.RESEMBLE_API_KEY;
 
-  if (isNarrator) {
-    // Slow down narrator using SSML
-    textType = TextType.SSML;
-    // Medium speed is default, "slow" is 80%. Let's try slow for clarity per feedback.
-    textToSynthesize = `<speak><prosody rate="slow">${escapeXml(text)}</prosody></speak>`;
+  if (!apiKey) {
+    throw new Error("Resemble AI credentials (RESEMBLE_API_KEY) are missing from environment variables.");
   }
 
-  const command = new SynthesizeSpeechCommand({
-    Engine: "standard",
-    OutputFormat: OutputFormat.MP3,
-    Text: textToSynthesize,
-    TextType: textType,
-    VoiceId: voiceId,
+  const url = `https://f.cluster.resemble.ai/stream`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "x-access-token": apiKey,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      data: text,
+      voice_uuid: voiceUuid
+    })
   });
 
-  const response = await polly.send(command);
-  if (response.AudioStream) {
-    const buffer = await response.AudioStream.transformToByteArray();
-    await fs.writeFile(outputPath, buffer);
-  } else {
-    throw new Error("Polly did not return an audio stream.");
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Resemble API Error:", errorText);
+    throw new Error(`Resemble returned ${response.status}: ${errorText}`);
   }
+
+  const arrayBuffer = await response.arrayBuffer();
+  await fs.writeFile(outputPath, Buffer.from(arrayBuffer));
 }
 
 /**
- * Generates a silence MP3 file using ffmpeg.
+ * Generates a silence WAV file using ffmpeg.
  */
 async function generateSilence(ms: number, outputPath: string) {
   const seconds = ms / 1000;
   if (!EFFECTIVE_FFMPEG_PATH) throw new Error("ffmpeg binary not found");
 
   return new Promise<void>((resolve, reject) => {
-    // Generate silence directly as MP3 with 22050Hz to match Polly
+    // Generate silence directly as WAV with 44100Hz 
     const p = spawn(EFFECTIVE_FFMPEG_PATH, [
       "-y",
       "-f", "lavfi",
-      "-i", "anullsrc=r=22050:cl=mono",
+      "-i", "anullsrc=r=44100:cl=mono",
       "-t", seconds.toString(),
-      "-f", "mp3",
-      "-acodec", "libmp3lame",
-      "-ar", "22050",
+      "-f", "wav",
+      "-acodec", "pcm_s16le",
+      "-ar", "44100",
       "-ac", "1",
       outputPath
     ]);
@@ -198,7 +180,7 @@ async function generateSilence(ms: number, outputPath: string) {
 }
 
 /**
- * Concatenates media files listed in concat.txt.
+ * Concatenates media files listed in concat.txt to an mp3 file.
  */
 async function concatenateFiles(concatListPath: string, outputPath: string) {
   if (!EFFECTIVE_FFMPEG_PATH) throw new Error("ffmpeg binary not found");
@@ -212,6 +194,7 @@ async function concatenateFiles(concatListPath: string, outputPath: string) {
       "-ar", "44100",
       "-ac", "1",
       "-b:a", "128k",
+      "-f", "mp3",
       outputPath
     ]);
 
@@ -224,10 +207,9 @@ async function concatenateFiles(concatListPath: string, outputPath: string) {
   });
 }
 
-
 export async function POST(req: NextRequest) {
   const tempId = uuidv4();
-  const tempDir = path.join(os.tmpdir(), `ielts-tts-${tempId}`);
+  const tempDir = path.join(os.tmpdir(), `resemble-tts-${tempId}`);
 
   try {
     const body = await req.json();
@@ -242,7 +224,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Empty script" }, { status: 400 });
     }
 
-    // Limit check (simple)
     if (segments.length > 500) {
       return NextResponse.json({ error: "Script too long (max 500 segments)" }, { status: 400 });
     }
@@ -250,7 +231,7 @@ export async function POST(req: NextRequest) {
     await fs.mkdir(tempDir, { recursive: true });
 
     // Generate a shared 500ms pause file for auto-spacing
-    const autoPausePath = path.join(tempDir, "auto_pause_500ms.mp3");
+    const autoPausePath = path.join(tempDir, "auto_pause_500ms.wav");
     await generateSilence(500, autoPausePath);
 
     const processedFiles: string[] = [];
@@ -262,18 +243,17 @@ export async function POST(req: NextRequest) {
 
       if (segment.type === "line") {
         const voiceId = getVoiceId(segment.speaker);
-        const fileName = `${filePrefix}.mp3`;
+        const fileName = `${filePrefix}.wav`; // Using .wav for resemble output to easily concatenate
         const filePath = path.join(tempDir, fileName);
-        // Apply SSML only for Narrator if requested
-        const isNarrator = (segment.speaker === "NARRATOR");
-        await synthesizeSpeech(segment.text, voiceId, filePath, isNarrator);
+
+        await synthesizeSpeech(segment.text, voiceId, filePath);
         processedFiles.push(filePath);
 
         // Auto-inject 500ms pause after every line for natural spacing
         processedFiles.push(autoPausePath);
 
       } else {
-        const fileName = `${filePrefix}_pause.mp3`;
+        const fileName = `${filePrefix}_pause.wav`;
         const filePath = path.join(tempDir, fileName);
         await generateSilence(segment.ms, filePath);
         processedFiles.push(filePath);
@@ -285,7 +265,7 @@ export async function POST(req: NextRequest) {
     const concatContent = processedFiles.map(f => `file '${f}'`).join("\n");
     await fs.writeFile(concatTxtPath, concatContent);
 
-    // Concatenate
+    // Concatenate to MP3
     const finalMp3Path = path.join(tempDir, "final.mp3");
     await concatenateFiles(concatTxtPath, finalMp3Path);
 

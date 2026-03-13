@@ -1,0 +1,692 @@
+[
+  {
+    "name": "Lucy",
+    "uuid": "fb2d2858",
+    "lang": "en-US"
+  },
+  {
+    "name": "Meera",
+    "uuid": "08975946",
+    "lang": "en-US"
+  },
+  {
+    "name": "Fiona",
+    "uuid": "cfb9967c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Grant",
+    "uuid": "7c4296be",
+    "lang": "en-US"
+  },
+  {
+    "name": "Abigail",
+    "uuid": "91b49260",
+    "lang": "en-US"
+  },
+  {
+    "name": "Chloe",
+    "uuid": "c1faa6af",
+    "lang": "en-US"
+  },
+  {
+    "name": "Grace",
+    "uuid": "7213a9ea",
+    "lang": "en-US"
+  },
+  {
+    "name": "Linda",
+    "uuid": "55f5b8dc",
+    "lang": "en-US"
+  },
+  {
+    "name": "Aaron",
+    "uuid": "38a0b764",
+    "lang": "en-US"
+  },
+  {
+    "name": "Jessica",
+    "uuid": "96d225a3",
+    "lang": "en-US"
+  },
+  {
+    "name": "Anaya",
+    "uuid": "c99f388c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Mark",
+    "uuid": "68e421ed",
+    "lang": "en-US"
+  },
+  {
+    "name": "Lauren",
+    "uuid": "4e972f71",
+    "lang": "en-US"
+  },
+  {
+    "name": "Evelyn",
+    "uuid": "61fcb769",
+    "lang": "en-US"
+  },
+  {
+    "name": "Ethan",
+    "uuid": "bee581c1",
+    "lang": "en-US"
+  },
+  {
+    "name": "Elaine",
+    "uuid": "637c2521",
+    "lang": "en-US"
+  },
+  {
+    "name": "Lisa",
+    "uuid": "8d516bf5",
+    "lang": "en-US"
+  },
+  {
+    "name": "Marisol",
+    "uuid": "1cf47426",
+    "lang": "en-US"
+  },
+  {
+    "name": "Gavin",
+    "uuid": "12066e89",
+    "lang": "en-US"
+  },
+  {
+    "name": "Laura",
+    "uuid": "c49e1b04",
+    "lang": "en-US"
+  },
+  {
+    "name": "Christina",
+    "uuid": "0b15fe25",
+    "lang": "en-US"
+  },
+  {
+    "name": "Eric",
+    "uuid": "0942a9fe",
+    "lang": "en-US"
+  },
+  {
+    "name": "Jason",
+    "uuid": "6a3e095e",
+    "lang": "en-US"
+  },
+  {
+    "name": "Dylan",
+    "uuid": "018dc07a",
+    "lang": "en-US"
+  },
+  {
+    "name": "Brian",
+    "uuid": "bec88a80",
+    "lang": "en-US"
+  },
+  {
+    "name": "Erica",
+    "uuid": "9595cc9e",
+    "lang": "en-US"
+  },
+  {
+    "name": "Dorothy",
+    "uuid": "082cb68f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Emmanuel",
+    "uuid": "a3b3f1df",
+    "lang": "en-US"
+  },
+  {
+    "name": "Deborah",
+    "uuid": "8d93c97d",
+    "lang": "en-US"
+  },
+  {
+    "name": "Archer",
+    "uuid": "d1959511",
+    "lang": "en-US"
+  },
+  {
+    "name": "Darlene",
+    "uuid": "e8d6d3c8",
+    "lang": "en-US"
+  },
+  {
+    "name": "Gordon",
+    "uuid": "175ac7a6",
+    "lang": "en-US"
+  },
+  {
+    "name": "Gianluca",
+    "uuid": "ba707fb5",
+    "lang": "en-US"
+  },
+  {
+    "name": "Rajesh",
+    "uuid": "9ed9d19b",
+    "lang": "en-US"
+  },
+  {
+    "name": "Walter",
+    "uuid": "ac7df359",
+    "lang": "en-US"
+  },
+  {
+    "name": "Andy",
+    "uuid": "e8883d33",
+    "lang": "en-US"
+  },
+  {
+    "name": "Minho",
+    "uuid": "4ed28aa9",
+    "lang": "en-US"
+  },
+  {
+    "name": "Rupert",
+    "uuid": "28f1626c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Andrew",
+    "uuid": "d2f26a3e",
+    "lang": "en-US"
+  },
+  {
+    "name": "Professor Shaposhnikov",
+    "uuid": "3f5fb9f1",
+    "lang": "en-US"
+  },
+  {
+    "name": "Maureen (Scared)",
+    "uuid": "251c9439",
+    "lang": "en-US"
+  },
+  {
+    "name": "Maureen (Sad)",
+    "uuid": "bca7481c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Mauren (Announcer)",
+    "uuid": "e984fb89",
+    "lang": "en-US"
+  },
+  {
+    "name": "Maureen (Happy)",
+    "uuid": "91947e5c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Maureen (Caring)",
+    "uuid": "b15e550f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Maureen (Angry)",
+    "uuid": "482babfc",
+    "lang": "en-US"
+  },
+  {
+    "name": "Carl Bishop (Scared)",
+    "uuid": "eacbc44f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Carl Bishop (Happy)",
+    "uuid": "99751e42",
+    "lang": "en-US"
+  },
+  {
+    "name": "Carl Bishop (Conversational)",
+    "uuid": "7f40ff35",
+    "lang": "en-US"
+  },
+  {
+    "name": "Willow II (Whispering)",
+    "uuid": "c815cd7a",
+    "lang": "en-US"
+  },
+  {
+    "name": "Willow (Whispering)",
+    "uuid": "f2906c4a",
+    "lang": "en-US"
+  },
+  {
+    "name": "William (Whispering)",
+    "uuid": "e2180df0",
+    "lang": "en-US"
+  },
+  {
+    "name": "Vivian",
+    "uuid": "1ff0045f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Vicky",
+    "uuid": "f453b918",
+    "lang": "en-US"
+  },
+  {
+    "name": "Tyler",
+    "uuid": "ff225977",
+    "lang": "en-US"
+  },
+  {
+    "name": "Tarkos",
+    "uuid": "779842bf",
+    "lang": "en-US"
+  },
+  {
+    "name": "Tanja (Warm Word Weaver)",
+    "uuid": "abbbc383",
+    "lang": "en-US"
+  },
+  {
+    "name": "Tanja (Telephonic)",
+    "uuid": "4f5a470b",
+    "lang": "en-US"
+  },
+  {
+    "name": "Tanja",
+    "uuid": "adb84c77",
+    "lang": "en-US"
+  },
+  {
+    "name": "Steve (Scared)",
+    "uuid": "aaa56e79",
+    "lang": "en-US"
+  },
+  {
+    "name": "Siobhan",
+    "uuid": "af72c1ac",
+    "lang": "en-US"
+  },
+  {
+    "name": "Seth",
+    "uuid": "d3e61caf",
+    "lang": "en-gb"
+  },
+  {
+    "name": "Samantha",
+    "uuid": "e28236ee",
+    "lang": "en-US"
+  },
+  {
+    "name": "Sam",
+    "uuid": "0f2f9a7e",
+    "lang": "en-US"
+  },
+  {
+    "name": "Robert",
+    "uuid": "3e907bcc",
+    "lang": "en-US"
+  },
+  {
+    "name": "Rico",
+    "uuid": "14ca34b3",
+    "lang": "en-US"
+  },
+  {
+    "name": "Richard Garifo",
+    "uuid": "85ba84f2",
+    "lang": "en-US"
+  },
+  {
+    "name": "Radio Nikole",
+    "uuid": "19eae884",
+    "lang": "en-US"
+  },
+  {
+    "name": "Primrose (Winded)",
+    "uuid": "0097f246",
+    "lang": "en-US"
+  },
+  {
+    "name": "Primrose",
+    "uuid": "33eecc17",
+    "lang": "en-US"
+  },
+  {
+    "name": "Pete",
+    "uuid": "1864fd63",
+    "lang": "en-US"
+  },
+  {
+    "name": "Paula J",
+    "uuid": "33e64cd2",
+    "lang": "en-GB"
+  },
+  {
+    "name": "Orion",
+    "uuid": "aa8053cc",
+    "lang": "en-US"
+  },
+  {
+    "name": "Olivia",
+    "uuid": "ef49f972",
+    "lang": "en-US"
+  },
+  {
+    "name": "Olga",
+    "uuid": "07c1d6b5",
+    "lang": "en-US"
+  },
+  {
+    "name": "Niki",
+    "uuid": "db37643c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Mike",
+    "uuid": "3a02dc40",
+    "lang": "en-US"
+  },
+  {
+    "name": "Melody",
+    "uuid": "1c49e774",
+    "lang": "en-US"
+  },
+  {
+    "name": "Maureen",
+    "uuid": "7d94218f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Matt Weller",
+    "uuid": "f4da4639",
+    "lang": "en-US"
+  },
+  {
+    "name": "Luna",
+    "uuid": "ae8223ca",
+    "lang": "en-US"
+  },
+  {
+    "name": "Lothar",
+    "uuid": "78671217",
+    "lang": "en-US"
+  },
+  {
+    "name": "Liz",
+    "uuid": "4884d94a",
+    "lang": "en-US"
+  },
+  {
+    "name": "Little Brittle",
+    "uuid": "8a73f115",
+    "lang": "en-US"
+  },
+  {
+    "name": "Little Ari",
+    "uuid": "805adead",
+    "lang": "en-US"
+  },
+  {
+    "name": "Kessi",
+    "uuid": "2211cb8c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Ken",
+    "uuid": "3dbfbf3d",
+    "lang": "en-US"
+  },
+  {
+    "name": "Katya",
+    "uuid": "c9ee13b4",
+    "lang": "en-US"
+  },
+  {
+    "name": "Kate",
+    "uuid": "28b4cc5a",
+    "lang": "en-US"
+  },
+  {
+    "name": "Karl Nordman",
+    "uuid": "da67f17e",
+    "lang": "en-US"
+  },
+  {
+    "name": "Justin (Meditative)",
+    "uuid": "2570000e",
+    "lang": "en-US"
+  },
+  {
+    "name": "Justin",
+    "uuid": "9d513c17",
+    "lang": "en-US"
+  },
+  {
+    "name": "Julie Hoverson",
+    "uuid": "b119524c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Josh",
+    "uuid": "987c99e9",
+    "lang": "en-US"
+  },
+  {
+    "name": "John",
+    "uuid": "ac48daeb",
+    "lang": "en-US"
+  },
+  {
+    "name": "Hem",
+    "uuid": "b6edbe5f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Helena",
+    "uuid": "ac948df2",
+    "lang": "en-US"
+  },
+  {
+    "name": "Harry Robinson",
+    "uuid": "3c36d67d",
+    "lang": "en-US"
+  },
+  {
+    "name": "Gene Amore",
+    "uuid": "f2ea7aa0",
+    "lang": "en-US"
+  },
+  {
+    "name": "Ember",
+    "uuid": "55592656",
+    "lang": "en-US"
+  },
+  {
+    "name": "Ed Smart",
+    "uuid": "0c755526",
+    "lang": "en-GB"
+  },
+  {
+    "name": "Deanna",
+    "uuid": "0842fdf9",
+    "lang": "en-US"
+  },
+  {
+    "name": "David",
+    "uuid": "5bb13f03",
+    "lang": "en-us"
+  },
+  {
+    "name": "Connor",
+    "uuid": "a6131acf",
+    "lang": "en-US"
+  },
+  {
+    "name": "Cliff",
+    "uuid": "fcf8490c",
+    "lang": "en-US"
+  },
+  {
+    "name": "Chris Whiting",
+    "uuid": "95b7560a",
+    "lang": "en-US"
+  },
+  {
+    "name": "Charlotte",
+    "uuid": "96b91cf9",
+    "lang": "en-US"
+  },
+  {
+    "name": "Charles",
+    "uuid": "d79a5198",
+    "lang": "en-US"
+  },
+  {
+    "name": "Carl Bishop (Angry)",
+    "uuid": "f06cd770",
+    "lang": "en-US"
+  },
+  {
+    "name": "Carl Bishop",
+    "uuid": "01bcc102",
+    "lang": "en-US"
+  },
+  {
+    "name": "Broadcast Joe",
+    "uuid": "21e49584",
+    "lang": "en-US"
+  },
+  {
+    "name": "Britney",
+    "uuid": "e57e23ff",
+    "lang": "en-US"
+  },
+  {
+    "name": "Brenley",
+    "uuid": "e6ec3ca4",
+    "lang": "en-US"
+  },
+  {
+    "name": "Brandy Sky",
+    "uuid": "79e2f1dc",
+    "lang": "en-US"
+  },
+  {
+    "name": "Blade",
+    "uuid": "8bedd793",
+    "lang": "en-US"
+  },
+  {
+    "name": "Beth",
+    "uuid": "fa66d263",
+    "lang": "en-US"
+  },
+  {
+    "name": "Beatrice Pendergast",
+    "uuid": "00b1fd4e",
+    "lang": "en-GB"
+  },
+  {
+    "name": "Austin",
+    "uuid": "82a67e58",
+    "lang": "en-US"
+  },
+  {
+    "name": "Aurora",
+    "uuid": "a72d9fca",
+    "lang": "en-US"
+  },
+  {
+    "name": "Ash",
+    "uuid": "ee322483",
+    "lang": "en-US"
+  },
+  {
+    "name": "Arthur",
+    "uuid": "9de11312",
+    "lang": "en-US"
+  },
+  {
+    "name": "Annika",
+    "uuid": "b27f3cc0",
+    "lang": "en-US"
+  },
+  {
+    "name": "Amelia",
+    "uuid": "ecbe5d97",
+    "lang": "en-US"
+  },
+  {
+    "name": "Alex",
+    "uuid": "41b99669",
+    "lang": "en-US"
+  },
+  {
+    "name": "Adam Lofbomm",
+    "uuid": "4e228dba",
+    "lang": "en-US"
+  },
+  {
+    "name": "Justin (Meditative) (Legacy)",
+    "uuid": "93ce0920",
+    "lang": "en-US"
+  },
+  {
+    "name": "Samantha (Legacy)",
+    "uuid": "266bfae9",
+    "lang": "en-US"
+  },
+  {
+    "name": "Olivia (Legacy)",
+    "uuid": "405b58e3",
+    "lang": "en-US"
+  },
+  {
+    "name": "Charles (Legacy)",
+    "uuid": "4c6d3da5",
+    "lang": "en-US"
+  },
+  {
+    "name": "Seth (Legacy)",
+    "uuid": "a52c4efc",
+    "lang": "en-gb"
+  },
+  {
+    "name": "Melody (Legacy)",
+    "uuid": "15be93bd",
+    "lang": "en-US"
+  },
+  {
+    "name": "Primrose (Whispering) (Legacy)",
+    "uuid": "a56c5c6f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Primrose (Legacy)",
+    "uuid": "7c8e47ca",
+    "lang": "en-US"
+  },
+  {
+    "name": "Beth (Legacy)",
+    "uuid": "25c7823f",
+    "lang": "en-US"
+  },
+  {
+    "name": "Primrose (Winded) (Legacy)",
+    "uuid": "6f9a77a4",
+    "lang": "en-US"
+  },
+  {
+    "name": "Vivian (Legacy)",
+    "uuid": "bed1044d",
+    "lang": "en-US"
+  },
+  {
+    "name": "Justin (Legacy)",
+    "uuid": "b2d1bb75",
+    "lang": "en-US"
+  },
+  {
+    "name": "William (Whispering) (Legacy)",
+    "uuid": "79eb7953",
+    "lang": "en-US"
+  }
+]

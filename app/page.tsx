@@ -10,20 +10,19 @@ const DEFAULT_SCRIPT = `*NARRATOR*: Welcome to the text to speech tool.
 `;
 
 const VOICES = [
-  { tag: "NARRATOR", voice: "Joanna", accent: "US English Female" },
-  { tag: "MAN / MAN1", voice: "Joey", accent: "US English Male" },
-  { tag: "MAN2", voice: "Matthew", accent: "US English Male" },
-  { tag: "MAN3", voice: "Justin", accent: "US English Male" },
-  { tag: "MAN4", voice: "Brian", accent: "British English Male" },
-  { tag: "MAN5", voice: "Russell", accent: "Australian English Male" },
-  { tag: "MAN6", voice: "Geraint", accent: "Welsh English Male" },
-  { tag: "WOMAN / WOMAN1", voice: "Salli", accent: "US English Female" },
-  { tag: "WOMAN2", voice: "Kendra", accent: "US English Female" },
-  { tag: "WOMAN3", voice: "Ivy", accent: "US English Female" },
-  { tag: "WOMAN4", voice: "Kimberly", accent: "US English Female" },
-  { tag: "WOMAN5", voice: "Amy", accent: "British English Female" },
-  { tag: "WOMAN6", voice: "Emma", accent: "British English Female" },
-  { tag: "WOMAN7", voice: "Nicole", accent: "Australian English Female" },
+  { tag: "NARRATOR", voice: "e984fb89", accent: "Announcer Female (Mauren)" },
+  { tag: "MAN / MAN1", voice: "3e907bcc", accent: "US Male (Robert)" },
+  { tag: "MAN2", voice: "3a02dc40", accent: "US Male (Mike)" },
+  { tag: "MAN3", voice: "1864fd63", accent: "US Male (Pete)" },
+  { tag: "MAN4", voice: "0c755526", accent: "UK Male (Ed Smart)" },
+  { tag: "MAN5", voice: "6a3e095e", accent: "US Male (Jason)" },
+  { tag: "MAN6", voice: "bec88a80", accent: "US Male (Brian)" },
+  { tag: "WOMAN / WOMAN1", voice: "ef49f972", accent: "US Female (Olivia)" },
+  { tag: "WOMAN2", voice: "e28236ee", accent: "US Female (Samantha)" },
+  { tag: "WOMAN3", voice: "96b91cf9", accent: "US Female (Charlotte)" },
+  { tag: "WOMAN4", voice: "ecbe5d97", accent: "US Female (Amelia)" },
+  { tag: "WOMAN5", voice: "a72d9fca", accent: "US Female (Aurora)" },
+  { tag: "WOMAN6", voice: "33e64cd2", accent: "UK Female (Paula J)" }
 ];
 
 export default function Home() {
